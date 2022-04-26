@@ -1,12 +1,52 @@
-
+//const whereCanIPark = function (spots, vehicle) {
+//  let parkingSpot = false;
+//  let parkingType1;
+//  let parkingType2;
+//  let parkingType3;
+//  
+//  switch (vehicle) {
+//    case 'regular':
+//      parkingType1 = 'R';
+//      break;
+//    case 'small':
+//      parkingType1 = 'R';
+//      parkingType2 = 'S';
+//      break;
+//    case 'motorcycle':
+//      parkingType1 = 'R';
+//      parkingType2 = 'S';
+//      parkingType3 = 'M';
+//      break;
+//  }
+//
+//  for (let y = 0; y < spots.length; y++) {
+//    for (let x = 0; x < spots.length; x++) {
+//      console.log(y)
+//      console.log(x)
+//      if(spots[x][y] === parkingType1 || spots[x][y] === parkingType2 || spots[x][y] === parkingType3) {
+//        parkingSpot = [x, y];
+//        break;
+//      }
+//    }
+//  }
+//  return parkingSpot;
+//};
 
 
 const whereCanIPark = function (spots, vehicle) {
-  for (let x = 0; x < spots.length; x++) {
-    for (let y = 0; y < spots[x].length; y++) {
-      if(spots[x][y] =)
+  for (let y = 0; y < spots.length; y++) {
+    for (let x = 0; x < spots[y].length; x++) {
+      let spot = spots[x][y];
+      if(vehicle === 'regular' && spot === 'R') { // 3X if vihicle === '...' && spots[x][y] === '..', return [x , y]
+        return [x, y];
+      } else if(vehicle === 'small' && (spot === 'S' || spot === 'R')) {
+        return [x, y];
+      } else if(vehicle === 'motorcycle' && (spot === 'S' || spot === 'R' || spot === 'M')) {
+        return [x, y];
+      }
     }
   }
+  return false
 };
 
 console.log(whereCanIPark(
